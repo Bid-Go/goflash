@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GoFlash - Panel de control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "primary-fixed": "#ffdbcc",
+                    "outline": "#8e7164",
+                    "secondary": "#3a5f94",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-surface-variant": "#5a4136",
+                    "outline-variant": "#e2bfb0",
+                    "tertiary-fixed": "#83fc8e",
+                    "on-secondary": "#ffffff",
+                    "primary": "#a04100",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary-fixed": "#351000",
+                    "primary-fixed-dim": "#ffb693",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb693",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "on-surface": "#191c1d",
+                    "on-secondary-fixed-variant": "#1f477b",
+                    "on-secondary-fixed": "#001b3c",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-container": "#003a10",
+                    "background": "#f8f9fa",
+                    "surface-tint": "#a04100",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-primary-container": "#572000",
+                    "on-tertiary-fixed": "#002106",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "primary-container": "#ff6b00",
+                    "tertiary": "#006e25",
+                    "secondary-container": "#9fc2fe",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "surface": "#f8f9fa",
+                    "tertiary-container": "#33af4c",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-container": "#294f83",
+                    "tertiary-fixed-dim": "#66df75",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "24px",
+                    "margin": "32px",
+                    "base": "8px",
+                    "container-max": "1280px",
+                    "stack-sm": "12px",
+                    "stack-lg": "48px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 191, 176, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+       // boton de regreso 
+    <div style="position:fixed; top:20px; left:20px; z-index:9999;">
+    <button onclick="history.back()"
+        style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
+        ← Regresar
+    </button>
+<!-- SideNavBar (Desktop Shell) -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 py-6 border-r border-outline-variant/20 bg-surface-container-lowest dark:bg-inverse-surface w-64 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Logística de conductor</h1>
+<img src="Image-removebg-preview.png" alt="Descripción de la imagen" width="50" height="50">
+<a href="GoFlash2.html"
+   class="font-headline-md text-headline-md font-bold text-primary hover:text-blue-600 transition-colors cursor-pointer">
+    GoFlash
+</a>
+</div>
+<nav class="flex-1">
+<!-- Panel Control is Active -->
+<a href="nuevoviaje.html" class="bg-primary-container dark:bg-primary-fixed text-on-primary-container dark:text-on-primary-fixed font-bold rounded-lg mx-2 my-1 p-3 flex items-center gap-3 active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Nuevo  viaje</span>
+</a>
+<a href="solicitudentrega.html"     text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg mx-2 my-1 p-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-lg text-label-lg">Mis entregas</span>
+</a>
+<a href= "historialpedidos.html" class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg mx-2 my-1 p-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-lg text-label-lg">Historial de pedidos</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-lg mx-2 my-1 p-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Configuración</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                Solicitar Recolección
+            </button>
+<div class="mt-6 border-t border-outline-variant/20 pt-4">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-lg text-label-lg">Soporte</span>
+</a>
+<a href="Registro.html" class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-lg text-label-lg">Cerrar Sesión</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Top Navigation for Mobile -->
+<header class="lg:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface-bright shadow-sm">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Santiago Entregas</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly driver for an inclusive logistics platform. The woman is smiling warmly in a bright, modern studio setting with soft lighting and a warm, corporate color palette that includes shades of orange and blue. Her attire is professional yet approachable, reflecting trust and reliability in the Santiago de Veraguas community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsTPl6MPvPpy__Hw-DM8c0Axcrc_lDRJutm_DskeaMzxMq64UXGi0GSHamDMq3jY8u7Is5d7c-K84dtIbupBjK1AVyAsoM12mdufLABsq4pz_N50Gl9uFqnHsY3Noa1bJN3zR8Ih8zsyZYgr_K55an3rHpEaFWehE-n91n2vJ3XHQUx3pDVk0yamP1p6Fo__bjmFSyT7495qOKubeQStVs_uitsXS6rW-ysKTvBufr1a8pYZMRWDETEYsbk5ozUeGPCDe0YWI-xQ8"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-20 lg:pt-8 px-6 pb-24 lg:pb-8 max-w-container-max mx-auto">
+<!-- Welcome Header -->
+<header class="mb-stack-lg flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+<div>
+<h2 class="font-display-lg text-headline-lg lg:text-display-lg text-on-surface mb-2">¡Hola, María!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Optimiza tu ruta de hoy. El ingreso promedio en Santiago es un 15% mayor en las zonas marcadas.</p>
+</div>
+<div class="flex gap-3">
+<div class="flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-full text-secondary">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-lg text-label-lg">Filtro Familiar Activo</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid: Main Stats -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<!-- Income Card -->
+<div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-7xl" data-icon="payments">payments</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-2">Ingresos de Hoy</p>
+<h3 class="font-display-lg text-headline-lg text-primary">$142.50</h3>
+<div class="mt-4 flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% vs. ayer</span>
+</div>
+</div>
+<!-- Trips Card -->
+<div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-secondary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-7xl" data-icon="route">route</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-2">Viajes Realizados</p>
+<h3 class="font-display-lg text-headline-lg text-secondary">18</h3>
+<div class="mt-4 flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+<span class="font-label-sm text-label-sm">6.5 horas activo</span>
+</div>
+</div>
+<!-- Rating Card -->
+<div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-tertiary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-7xl" data-icon="stars">stars</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-2">Calificación Comunitaria</p>
+<h3 class="font-display-lg text-headline-lg text-tertiary">4.92</h3>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="savings">savings</span>
+                        +250 Chonenses
+                    </span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Upcoming Trips Section -->
+<section class="lg:col-span-7">
+<div class="flex items-center justify-between mb-stack-md">
+<h4 class="font-headline-md text-headline-md">Próximos Viajes</h4>
+<button class="text-primary font-label-lg hover:underline">Ver agenda completa</button>
+</div>
+<div class="space-y-4">
+<!-- Trip Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 flex flex-col md:flex-row gap-4 items-start md:items-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="package_2">package_2</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-xs font-bold">EXPRESS</span>
+<span class="text-on-surface-variant text-xs">ID: #49201</span>
+</div>
+<p class="font-label-lg text-on-surface">Pyme: Café La Montaña</p>
+<p class="text-sm text-on-surface-variant">Recogida: Av. Central, Santiago</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-bold text-primary">$12.50</p>
+<button class="mt-2 bg-primary px-4 py-2 rounded-lg text-on-primary text-sm font-bold hover:brightness-110 transition-all">Aceptar</button>
+</div>
+</div>
+<!-- Trip Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 flex flex-col md:flex-row gap-4 items-start md:items-center hover:shadow-md transition-shadow">
+<div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded text-xs font-bold">ESTÁNDAR</span>
+<span class="text-on-surface-variant text-xs">ID: #49205</span>
+</div>
+<p class="font-label-lg text-on-surface">Supermercado MyS</p>
+<p class="text-sm text-on-surface-variant">Recogida: Los Algarrobos, Veraguas</p>
+</div>
+<div class="text-right shrink-0">
+<p class="font-bold text-secondary">$8.75</p>
+<button class="mt-2 border-2 border-primary text-primary px-4 py-1.5 rounded-lg text-sm font-bold hover:bg-primary/5 transition-all">Detalles</button>
+</div>
+</div>
+</div>
+</section>
+<!-- High Demand Zone Section -->
+<section class="lg:col-span-5">
+<div class="mb-stack-md">
+<h4 class="font-headline-md text-headline-md">Zonas de Alta Demanda</h4>
+<p class="text-on-surface-variant text-sm mt-1">Santiago de Veraguas - En tiempo real</p>
+</div>
+<div class="rounded-3xl overflow-hidden shadow-lg h-64 lg:h-80 relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A clean, modern digital map interface of Santiago de Veraguas, Panama. The map features heatmap overlays in vibrant orange and soft blue to represent high demand logistics zones. The aesthetic is high-fidelity and professional, with minimalist iconography and a bright light-mode design that emphasizes clarity and efficiency for a driver dashboard." data-location="Santiago de Veraguas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtm1WEFr9lo8F0jZKWKPy0QLqf7-HGYS1PwidYBFZut1wVvQD9jqofj7WCljiKnhF1yIoyGqCT95pC9DRP02NhE0A78_-AiAbAqjpOHpzpNPnj564rCCXiThZgY4MXou7Vpbb4gnKWO2NWielgNORq3kgM_9So_MoonOeeFk0QUz1az-X-27nEADrwk9lifyj3ghunO3x3nb0AIXAg80Jr7qe_8R191QgaMYRj9bhIJjtbV8Nruhr23jAzGZAxwWScz9jD8mzwrXA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<div class="flex items-center gap-2 text-white mb-2">
+<div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+<span class="font-label-lg">Calidonia &amp; El Espino</span>
+</div>
+<p class="text-white/80 text-sm">Tarifa dinámica activa: 1.4x ingresos por entrega.</p>
+</div>
+</div>
+<div class="mt-6 glass-card p-4 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="electric_moped">electric_moped</span>
+</div>
+<div>
+<p class="font-label-lg">Préstamo "Pyme Mujer"</p>
+<p class="text-xs text-on-surface-variant">Disponible: $2,500 para moto eléctrica</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Shell) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-on-primary-fixed-variant text-on-primary-fixed dark:text-primary-fixed rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-label-sm">Mapa</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+<span class="font-label-sm text-label-sm">Chonenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</a>
+</nav>
+<!-- Success Modal Interaction Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-6" id="successModal">
+<div class="bg-surface-container-lowest p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl">
+<div class="w-20 h-20 bg-tertiary-fixed rounded-full flex items-center justify-center mx-auto mb-6 text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-4xl" data-icon="check_circle">check_circle</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2">¡Viaje Aceptado!</h4>
+<p class="text-on-surface-variant mb-8">Dirígete a Café La Montaña para iniciar el servicio.</p>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold" onclick="closeModal()">Empezar Navegación</button>
+</div>
+</div>
+<script>
+        function openModal() {
+            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('successModal').classList.add('flex');
+        }
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('successModal').classList.remove('flex');
+        }
+
+        // Add event listeners to all "Aceptar" buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText === 'Aceptar') {
+                btn.addEventListener('click', openModal);
+            }
+        });
+    </script>
+</body></html>

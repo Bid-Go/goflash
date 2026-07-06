@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>AutoReg - Registro de Usuario</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#452b23",
+                    "primary": "#a04100",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-secondary-fixed": "#001b3c",
+                    "surface-container-low": "#f6f3f2",
+                    "primary-container": "#ff6b00",
+                    "on-surface-variant": "#5a4136",
+                    "surface": "#fcf9f8",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "outline": "#8e7164",
+                    "tertiary": "#77574d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fcf9f8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-primary-container": "#572000",
+                    "secondary": "#3a5f94",
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#1f477b",
+                    "inverse-primary": "#ffb693",
+                    "on-secondary-container": "#294f83",
+                    "surface-container-high": "#eae7e7",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "primary-fixed-dim": "#ffb693",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "tertiary-fixed-dim": "#e7bdb1",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-tertiary-fixed": "#2c160e",
+                    "on-primary-fixed": "#351000",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#9fc2fe",
+                    "inverse-surface": "#313030",
+                    "surface-container": "#f0eded",
+                    "on-surface": "#1c1b1b",
+                    "on-background": "#1c1b1b",
+                    "surface-bright": "#fcf9f8",
+                    "on-tertiary-fixed-variant": "#5d4037",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#e2bfb0",
+                    "surface-variant": "#e5e2e1",
+                    "tertiary-container": "#b69186",
+                    "surface-tint": "#a04100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "2rem",
+                    "xl": "2rem",
+                    "xs": "0.25rem",
+                    "gutter": "1.5rem",
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "xxl": "4rem",
+                    "sm": "0.5rem",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-lg": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "caption": ["Montserrat"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3a5f94 !important; /* Secondary Blue from config */
+            box-shadow: 0 0 0 2px rgba(58, 95, 148, 0.1);
+        }
+        .step-inactive {
+            display: none;
+        }
+        /* Custom Ambient Shadow for Cards */
+        .ambient-card {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin h-16 bg-surface dark:bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">AutoReg</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-full" data-icon="search">search</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-16 px-4 pt-6 space-y-6">
+<!-- Welcome Header -->
+<section class="space-y-1">
+<h1 class="font-headline-md text-headline-md text-on-surface">Crear Cuenta</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Completa los pasos para registrar tu vehículo en el sistema oficial.</p>
+</section>
+<!-- Stepper Indicator -->
+<nav class="flex items-center justify-between px-2 mb-8" id="stepper">
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold" id="step-indicator-1">1</div>
+<span class="text-[10px] font-semibold text-primary uppercase">Personal</span>
+</div>
+<div class="flex-1 h-0.5 bg-outline-variant mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold" id="step-indicator-2">2</div>
+<span class="text-[10px] font-semibold text-on-surface-variant uppercase">Vehículo</span>
+</div>
+<div class="flex-1 h-0.5 bg-outline-variant mx-2 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold" id="step-indicator-3">3</div>
+<span class="text-[10px] font-semibold text-on-surface-variant uppercase">Pago</span>
+</div>
+</nav>
+<!-- Registration Form -->
+<form class="space-y-6" id="registration-form">
+<!-- STEP 1: Personal Data -->
+<div class="space-y-6" id="step-1">
+<div class="bg-surface p-lg rounded-xl ambient-card space-y-5 border border-surface-container-high">
+<div class="flex flex-col items-center mb-4">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-dashed border-outline text-on-surface-variant overflow-hidden cursor-pointer active:scale-95 transition-transform" id="photo-upload-trigger">
+<span class="material-symbols-outlined text-4xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white p-1 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-2 text-center">Foto Tamaño Carné (Área Táctil)</p>
+</div>
+<div class="space-y-4">
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Nombre Completo</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface focus:bg-white transition-all" placeholder="Ej. Juan Pérez" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Cédula</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all" placeholder="8-000-000" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Fecha Nac.</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all" required="" type="date"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Género</label>
+<select class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all appearance-none bg-[url('https://fonts.gstatic.com/s/i/materialiconsoutlined/keyboard_arrow_down/v6/24px.svg')] bg-[length:24px] bg-[right_12px_center] bg-no-repeat">
+<option>Masculino</option>
+<option>Femenino</option>
+<option>Otro</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Teléfono</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all" placeholder="+507 6000-0000" required="" type="tel"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Correo Electrónico</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all" placeholder="correo@ejemplo.com" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Contraseña</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+</div>
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-md active:scale-[0.98] transition-transform flex items-center justify-center gap-2" onclick="nextStep(2)" type="button">
+                    Continuar Detalles Vehículo
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- STEP 2: Vehicle Data -->
+<div class="step-inactive space-y-6" id="step-2">
+<div class="bg-surface p-lg rounded-xl ambient-card space-y-5 border border-surface-container-high">
+<div class="flex items-center gap-3 border-b border-outline-variant pb-4 mb-2">
+<span class="material-symbols-outlined text-secondary" data-icon="directions_car">directions_car</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Tu Vehículo</h2>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Tipo de Auto</label>
+<select class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all appearance-none bg-[url('https://fonts.gstatic.com/s/i/materialiconsoutlined/keyboard_arrow_down/v6/24px.svg')] bg-[length:24px] bg-[right_12px_center] bg-no-repeat">
+<option>Sedán</option>
+<option>SUV</option>
+<option>Hatchback</option>
+<option>Pick-up</option>
+<option>Motocicleta</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Número de Placa</label>
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface uppercase transition-all" placeholder="AA0000" required="" type="text"/>
+</div>
+</div>
+<div class="p-4 bg-primary-fixed text-on-primary-fixed-variant rounded-lg flex gap-3">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<p class="font-caption text-caption">Asegúrate de que el número de placa coincida exactamente con tu registro municipal actual.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="w-full h-12 bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg active:scale-[0.98] transition-transform" onclick="nextStep(1)" type="button">
+                        Atrás
+                    </button>
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-md active:scale-[0.98] transition-transform flex items-center justify-center gap-2" onclick="nextStep(3)" type="button">
+                        Método Pago
+                        <span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Payment Method -->
+<div class="step-inactive space-y-6" id="step-3">
+<div class="bg-surface p-lg rounded-xl ambient-card space-y-6 border border-surface-container-high">
+<div class="flex items-center gap-3 border-b border-outline-variant pb-4 mb-2">
+<span class="material-symbols-outlined text-secondary" data-icon="payments">payments</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Pago</h2>
+</div>
+<div class="space-y-4">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Selecciona Método</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="relative flex flex-col items-center justify-center p-4 border-2 border-outline-variant rounded-xl cursor-pointer bg-surface-container-low transition-all" id="method-clave">
+<input checked="" class="hidden peer" name="payment_method" type="radio"/>
+<span class="material-symbols-outlined text-3xl mb-1 text-on-surface-variant peer-checked:text-primary" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-caption text-on-surface-variant">Tarjeta Clave</span>
+<div class="absolute inset-0 border-2 border-primary rounded-xl opacity-0 peer-checked:opacity-100 pointer-events-none"></div>
+</label>
+<label class="relative flex flex-col items-center justify-center p-4 border-2 border-outline-variant rounded-xl cursor-pointer bg-surface-container-low transition-all" id="method-debit">
+<input class="hidden peer" name="payment_method" type="radio"/>
+<span class="material-symbols-outlined text-3xl mb-1 text-on-surface-variant peer-checked:text-primary" data-icon="credit_card">credit_card</span>
+<span class="font-label-md text-caption text-on-surface-variant">Débito/Visa</span>
+<div class="absolute inset-0 border-2 border-primary rounded-xl opacity-0 peer-checked:opacity-100 pointer-events-none"></div>
+</label>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 ml-1">Número de Tarjeta</label>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low border border-outline-variant font-body-md text-on-surface transition-all" placeholder="0000 0000 0000 0000" required="" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant" data-icon="lock">lock</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container rounded-lg">
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-on-surface-variant">Registro Anual</span>
+<span class="text-on-surface">$25.00</span>
+</div>
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Servicios Digitales</span>
+<span class="text-on-surface">$2.50</span>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="font-bold text-on-surface">Total</span>
+<span class="font-bold text-primary text-xl">$27.50</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="w-full h-12 bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg active:scale-[0.98] transition-transform" onclick="nextStep(2)" type="button">
+                        Atrás
+                    </button>
+<button class="w-full h-12 bg-primary text-on-primary font-bold text-label-md rounded-lg shadow-lg active:scale-[0.95] transition-transform" type="submit">
+                        Finalizar Registro
+                    </button>
+</div>
+</div>
+</form>
+<!-- Footer Help -->
+<footer class="w-full py-8 px-margin flex flex-col items-center gap-4">
+<p class="font-caption text-caption text-secondary text-center">© 2024 AutoReg Systems - Todos los derechos reservados</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-on-surface-variant hover:underline hover:text-primary" href="#">Términos</a>
+<a class="font-caption text-caption text-on-surface-variant hover:underline hover:text-primary" href="#">Privacidad</a>
+<a class="font-caption text-caption text-on-surface-variant hover:underline hover:text-primary" href="#">Soporte</a>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-2 px-4 bg-surface dark:bg-surface-container-low shadow-[0px_-4px_20px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="app_registration">app_registration</span>
+<span class="font-label-md text-[10px]">Register</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-label-md text-[10px]">Vehicles</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-[10px]">Account</span>
+</a>
+</nav>
+<script>
+        function nextStep(stepNumber) {
+            // Hide all steps
+            document.getElementById('step-1').classList.add('step-inactive');
+            document.getElementById('step-2').classList.add('step-inactive');
+            document</script></body></html>

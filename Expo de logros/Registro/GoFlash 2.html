@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GoFlash | Transporte y Logística con Corazón</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "primary-fixed": "#ffdbcc",
+                    "outline": "#8e7164",
+                    "secondary": "#3a5f94",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-surface-variant": "#5a4136",
+                    "outline-variant": "#e2bfb0",
+                    "tertiary-fixed": "#83fc8e",
+                    "on-secondary": "#ffffff",
+                    "primary": "#a04100",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary-fixed": "#351000",
+                    "primary-fixed-dim": "#ffb693",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb693",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "on-surface": "#191c1d",
+                    "on-secondary-fixed-variant": "#1f477b",
+                    "on-secondary-fixed": "#001b3c",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-container": "#003a10",
+                    "background": "#f8f9fa",
+                    "surface-tint": "#a04100",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-primary-container": "#572000",
+                    "on-tertiary-fixed": "#002106",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "primary-container": "#ff6b00",
+                    "tertiary": "#006e25",
+                    "secondary-container": "#9fc2fe",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "surface": "#f8f9fa",
+                    "tertiary-container": "#33af4c",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-container": "#294f83",
+                    "tertiary-fixed-dim": "#66df75",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "24px",
+                    "margin": "32px",
+                    "base": "8px",
+                    "container-max": "1280px",
+                    "stack-sm": "12px",
+                    "stack-lg": "48px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "display-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffdbcc 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .chonenses-chip {
+            background-color: #33af4c;
+            color: white;
+            border-radius: 9999px;
+            padding: 4px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface-bright shadow-sm">
+<div class="flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
+ 
+    <!-- Logo -->
+<div class="flex items-center gap-4">
+<img
+
+        src="Image-removebg-preview.png"
+
+        alt="Descripción de la imagen"
+
+        width="50"
+
+        height="50"
+>
+ 
+<a href="GoFlash2.html">
+    <span class="font-headline-md text-headline-md font-bold text-primary hover:text-blue-600 transition-colors cursor-pointer">
+        GoFlash
+    </span>
+</a>
+</div>
+ 
+    <!-- Menú Desktop -->
+<div class="hidden lg:flex items-center gap-6">
+<a
+
+        class="font-label-lg text-label-lg text-primary border-b-2 border-primary pb-1"
+
+        href="paneldecontrol.html"
+>
+
+        Servicios
+</a>
+ 
+      <a
+
+        class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-200"
+
+        href="nuevoviaje.html"
+>
+
+        Viajes
+</a>
+ 
+      <a
+
+        class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-200"
+
+        href="beneficios.html"
+>
+
+        Genera ganancias
+</a>
+ 
+      <a
+
+        class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-200"
+
+        href="solicitudentrega.html"
+>
+
+        Delivery
+</a>
+</div>
+ 
+    <!-- Acciones Desktop -->
+<div class="hidden lg:flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">
+
+        notifications
+</span>
+ 
+      <span class="material-symbols-outlined text-on-surface-variant">
+
+        account_circle
+</span>
+ 
+        <a
+             href="Registro.html"
+            class="inline-block text-center bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg hover:opacity-90 transition-all"
+>
+    Iniciar Sesión
+</a>
+
+        <a
+            href="Registro.html"
+            class="inline-block text-center bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg hover:opacity-90 transition-all"
+>
+  Regístrate
+</a>
+</div>
+ 
+    <!-- Botón Menú Mobile -->
+<button
+
+      id="menuBtn"
+
+      class="lg:hidden flex items-center justify-center"
+>
+<span class="material-symbols-outlined text-4xl text-primary">
+
+        menu
+</span>
+</button>
+ 
+  </div>
+</nav>
+ 
+<!-- Overlay -->
+<div
+
+  id="overlay"
+
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-40"
+></div>
+ 
+<!-- Menú lateral -->
+<div
+
+  id="mobileMenu"
+
+  class="fixed top-0 right-[-350px] h-screen w-[320px] bg-white z-50 shadow-2xl transition-all duration-300 ease-in-out"
+>
+ 
+  <!-- Encabezado -->
+<div class="flex justify-between items-center p-5 border-b">
+ 
+    <div class="flex items-center gap-3">
+<img
+
+        src="Image-removebg-preview.png"
+
+        alt="Logo"
+
+        width="40"
+
+        height="40"
+>
+ 
+      <span class="font-bold text-xl text-primary">
+
+        GoFlash
+</span>
+</div>
+ 
+    <button id="closeMenu">
+<span class="material-symbols-outlined text-3xl">
+
+        close
+</span>
+</button>
+ 
+  </div>
+ 
+  <!-- Contenido -->
+<div class="flex flex-col h-full p-6">
+ 
+    <div class="flex flex-col gap-5">
+ 
+      <a
+
+        href="paneldecontrol.html"
+
+        class="text-lg font-semibold text-primary border-b pb-2"
+>
+
+        Servicios
+</a>
+ 
+      <a
+
+        href="nuevoviaje.html"
+
+        class="text-lg text-gray-700 hover:text-primary"
+>
+
+        Viajes
+</a>
+ 
+      <a
+
+        href="beneficios.html"
+
+        class="text-lg text-gray-700 hover:text-primary"
+>
+
+        Genera ganancia
+</a>
+ 
+      <a
+
+        href="solicitudentrega.html"
+
+        class="text-lg text-gray-700 hover:text-primary"
+>
+
+        Delivery
+</a>
+ 
+    </div>
+ 
+    <div class="border-t my-6"></div>
+ 
+    <!-- Iconos -->
+<div class="flex gap-5 mb-8">
+ 
+      <span
+
+        class="material-symbols-outlined text-3xl text-gray-600"
+>
+
+        notifications
+</span>
+ 
+      <span
+
+        class="material-symbols-outlined text-3xl text-gray-600"
+>
+
+        account_circle
+</span>
+ 
+    </div>
+ 
+    <!-- Botones -->
+<div class="flex flex-col gap-4">
+ 
+              <a
+             href="Registro.html"
+            class="inline-block text-center bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg hover:opacity-90 transition-all"
+>
+    Iniciar Sesión
+</a>
+
+        <a
+            href="Registro.html"
+            class="inline-block text-center bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg hover:opacity-90 transition-all"
+>
+  Regístrate
+</a>
+    </div>
+ 
+  </div>
+ 
+</div>
+ 
+<script>
+
+  const menuBtn = document.getElementById("menuBtn");
+
+  const closeMenu = document.getElementById("closeMenu");
+
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  const overlay = document.getElementById("overlay");
+ 
+  function abrirMenu() {
+
+    mobileMenu.style.right = "0";
+
+    overlay.classList.remove("hidden");
+
+    document.body.style.overflow = "hidden";
+
+  }
+ 
+  function cerrarMenu() {
+
+    mobileMenu.style.right = "-350px";
+
+    overlay.classList.add("hidden");
+
+    document.body.style.overflow = "auto";
+
+  }
+ 
+  menuBtn.addEventListener("click", abrirMenu);
+
+  closeMenu.addEventListener("click", cerrarMenu);
+
+  overlay.addEventListener("click", cerrarMenu);
+</script>
+ 
+ 
+<main class="pt-16">
+    // boton de regreso 
+    <div style="position:fixed; top:20px; left:20px; z-index:9999;">
+    <button onclick="history.back()"
+        style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
+        ← Regresar
+    </button>
+</div>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden hero-gradient">
+<div class="container max-w-container-max mx-auto px-gutter grid lg:grid-cols-2 gap-stack-lg items-center relative z-10">
+<div class="flex flex-col gap-margin">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed w-fit">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-lg">Seguridad Local Certificada</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background">
+                        Muévete, envía y gana.<span class="text-primary"> Todo en un solo lugar.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        La plataforma que te conecta con lo que necesitas: un viaje seguro, entregas rápidas o el control de tus propios ingresos.
+                    </p>
+<div class="flex flex-wrap gap-4">
+    // botones de viaje seguro y delivery confiables//s
+<a href="nuevoviaje.html"
+   class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline-md shadow-lg hover:shadow-xl transition-all">
+   Viaja Seguro
+</a>
+
+<a href="solitudentrega.html"
+   class="border-2 border-secondary text-secondary px-8 py-4 rounded-xl font-headline-md hover:bg-secondary hover:text-on-secondary transition-all">
+   Deliverys confiables
+</a>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container rounded-full opacity-20 blur-3xl"></div>
+<div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+<title>Carrusel Automático</title>
+    <style>
+        /* Contenedor principal del carrusel */
+        .carrusel {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+            overflow: hidden; /* Esconde las imágenes que no están activas */
+            border-radius: 10px;
+        }
+
+        /* Contenedor que guarda todas las imágenes juntas */
+        .carrusel-slides {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease-in-out; /* Hace el efecto de deslizamiento suave */
+        }
+
+        /* Estilo para cada imagen individual */
+        .carrusel-slides img {
+            width: 100%;
+            flex-shrink: 0; /* Evita que las imágenes se achiquen */
+            object-fit: cover;
+            height: 400px; /* Puedes ajustar la altura a tu gusto */
+        }
+    </style>
+</head>
+<body>
+        <div class="carrusel">
+        <div class="carrusel-slides" id="slides">
+            <img src="WhatsApp Image 2026-06-21 at 10.49.08 AM.jpeg" alt="Imagen 1">
+            <img src="WhatsApp Image 2026-06-21 at 10.49.12 AM.jpeg" alt="Imagen 2">
+            <img src="WhatsApp Image 2026-06-21 at 10.49.03 AM.jpeg" alt="Imagen 3">
+            <img src="WhatsApp Image 2026-06-21 at 10.58.05 AM.jpeg" alt="Imagen 3">
+        </div>
+    </div>
+
+    <script>
+        const slides = document.getElementById('slides');
+        const imagenes = document.querySelectorAll('#slides img');
+        
+        let indice = 0;
+
+        function moverCarrusel() {
+            indice++;
+            
+            // Si llega al final, regresa a la primera imagen
+            if (indice >= imagenes.length) {
+                indice = 0;
+            }
+            
+            // Multiplica el índice por -100 para mover el contenedor hacia la izquierda
+            slides.style.transform = `translateX(${-indice * 100}%)`;
+        }
+
+        // Configura el tiempo en milisegundos (3000ms = 3 segundos)
+        setInterval(moverCarrusel, 3000);
+    </script>
+</div>
+</div>
+</div>
+</section>
+<!-- Filtro Familiar Section -->
+<section class="py-stack-lg bg-surface-container-low">
+<div class="container max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-margin gap-4">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg text-secondary mb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl">family_restroom</span>
+                            Viajes y Envíos Confiables
+                        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                            Tu tranquilidad es nuestra prioridad. Implementamos filtros estrictos para garantizar un entorno seguro en cada kilómetro.
+                        </p>
+</div>
+<button class="text-secondary font-label-lg flex items-center gap-2 hover:underline">
+                        Ver protocolos de seguridad <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid md:grid-cols-3 gap-stack-md">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-soft border border-outline-variant/20 hover:-translate-y-2 transition-transform duration-300">
+<div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary-fixed text-3xl">local_hospital</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Flota Certificada</h3>
+<p class="text-on-surface-variant">Cada vehículo pasa por una inspección técnica obligatoria para asegurar traslados cómodos y sin imprevistos.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-soft border border-outline-variant/20 hover:-translate-y-2 transition-transform duration-300">
+<div class="w-14 h-14 bg-primary-fixed rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary-fixed text-3xl">location_home</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Conductores Verificados</h3>
+<p class="text-on-surface-variant">Todo nuestro equipo cuenta con validación de antecedentes y récord policial verificado antes de activarse en la app.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-soft border border-outline-variant/20 hover:-translate-y-2 transition-transform duration-300">
+<div class="w-14 h-14 bg-tertiary-fixed rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl">share_location</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Soporte en Tiempo Real</h3>
+<p class="text-on-surface-variant">Monitoreamos cada viaje y entrega activamente para brindarte asistencia inmediata ante cualquier eventualidad.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Logística Pymes Section (Bento Grid) -->
+<section class="py-stack-lg">
+<div class="container max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-4">Logística para <span class="text-primary-container">Delivery</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        Lleva tus paquetes a donde sea. Impulsamos tus ventas con entregas el mismo día, la clave perfecta para fidelizar a tus compradores.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-highest rounded-3xl overflow-hidden relative group">
+<img alt="Pyme Logistics" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A vibrant indoor shot of a local boutique store in Avenida Central, Santiago. A delivery courier in a professional Santiago Entregas uniform is picking up a beautifully packaged shopping bag from a friendly shop owner. Warm ambient lighting, high-quality textures of the store's interior, and a focus on the human interaction and community trust. Modern corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_n1ID5qciZTimMh2TAKdbpioYvD7nQfsa3B4TDCY9X5nIIPwB4Lr_ZNISRWpagspjDiZa9m9lsFhG72hQsQnW4SGRDqOE7vdLpFDQ8kBqbUrjMuCWtQnaenDIjS9BU7R1jlEu82it2gMpRiJPQxtIJ9m9ZFRGMGAJyAwRRKSTn51zoIsF5a0Rcnf6oRtkaW_hejNbA3eihvmklrmC3r6n62YvO0TWyPUKLP6ooiMlF3prICseLH6sCYb1dHvKfq6MZ6uyScIj3tc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 flex flex-col justify-end">
+<span class="text-primary-fixed font-label-lg mb-2">Omnicanalidad</span>
+<h3 class="text-white font-headline-lg mb-2">WhatsApp e Instagram Shop</h3>
+<p class="text-white/80">Integramos tu flujo de ventas directamente con nuestro sistema de despacho inmediato.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-secondary p-8 rounded-3xl flex flex-col justify-between text-on-secondary">
+<div>
+<h3 class="font-headline-md mb-4">Ruta Mall Santiago</h3>
+<p class="opacity-90">Recolecciones programadas cada 2 horas para despachos masivos. Ahorra hasta un 30% en costos operativos.</p>
+</div>
+<div class="flex gap-2">
+<div class="bg-white/20 px-3 py-1 rounded-full text-xs">Avenida Central</div>
+<div class="bg-white/20 px-3 py-1 rounded-full text-xs">Mall</div>
+<div class="bg-white/20 px-3 py-1 rounded-full text-xs">Canto del Llano</div>
+</div>
+</div>
+<div class="bg-tertiary-container p-6 rounded-3xl flex flex-col items-center justify-center text-center text-on-tertiary">
+<span class="material-symbols-outlined text-5xl mb-2">fast_forward</span>
+<h4 class="font-headline-md">Flash</h4>
+<p class="text-sm">En menos de 45 min</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-3xl flex flex-col justify-center">
+<div class="flex -space-x-2 mb-4">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Profile face 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDlKCRNACSL4gcGeDjVNVylFUYA7isgAJCX0dNvzccdSa8NFwv3NxnSOGTO49AacMZuUnlXUfoyJpCUYPbqDkVWi8o2UozaekdtrdjTTBqibcHguEuz1LO6HVYHL31O1QAkkPRs_UH-snwQwcJCvz1iQ3FddsD97fBSd1yv5L92DzqL7tpC2E5HMwpdHttO8DDlfANl8w7BZGtCI_LUIU05NLRYTQ7m4P8SZngSDEUytRNOoDbn9Q5YybJynqIHH-EFPw9-3AJv5k"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Profile face 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgWvgTv5ZgspsSUQPxcCiu_rWag5U2AyVluwe2UnJxiDTr6lWL901wMAQzZt23B8tLgV82fY8-cxEjyi69VgHOffLeOYiWJtlnHclNHHNZZJS4V3AJL-yobcrbLOn4LAF0kXFvnh1FPDEKFkqELFd9ajqj5jrMEtlOgCqlzWqLDBJKRiPu-IoQx51-3ZRAQB3AUZaYZ4K_zs0V22snR_smUIyySzQuDFF-5ChrzDcy6Pm38WBwZPyAHZg2nAejqonrxPXMKQvX3oI"/>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-[10px] font-bold text-on-primary-fixed border-2 border-white">+500</div>
+</div>
+<p class="font-label-lg text-on-surface">Confia en nueestros trabajaores.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Chonenses Section -->
+<section class="py-stack-lg bg-surface-container overflow-hidden">
+<div class="container max-w-container-max mx-auto px-gutter relative">
+<div class="grid lg:grid-cols-2 gap-stack-lg items-center">
+<div class="relative order-2 lg:order-1">
+<div class="glass-card p-8 rounded-[40px] shadow-2xl relative z-10 border-primary/20">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-on-surface-variant font-label-lg">Tu Balance</p>
+<h3 class="text-4xl font-bold text-primary">2,450 <span class="text-lg font-normal">FlashPointsh</span></h3>
+</div>
+<div class="chonenses-chip">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>Nivel Oro</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-bright rounded-2xl flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">redeem</span>
+<span class="font-body-md">Viaje con 20% OFF</span>
+</div>
+<button class="bg-primary-fixed text-on-primary-fixed px-4 py-1 rounded-full text-xs font-bold">Canjear</button>
+</div>
+<div class="p-4 bg-surface-bright rounded-2xl flex justify-between items-center opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">local_taxi</span>
+<span class="font-body-md">Cupon de 10% Descuento</span>
+</div>
+<span class="text-xs font-bold">100 pts</span>
+</div>
+</div>
+</div>
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container rounded-full opacity-10 animate-pulse"></div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="font-display-lg text-display-lg mb-6 text-on-surface">Viaja y <span class="text-tertiary">Acumula</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                            Tu fidelidad nos mueve. Por cada viaje privado que realices con nosotros, sumas progreso a tu barra de seguimiento disfrutando de la máxima calidad y el mejor servicio. ¡Completa tu meta y canjea tus puntos por descuentos exclusivos!
+                        </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Progreso asegurado: Cada viaje te acerca a tu meta.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Grandes beneficios: Obtén entre un 20% y 25% de descuento en tu próximo viaje al completar tu seguimiento.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Calidad garantizada: Viaja con el confort y la seguridad que te mereces.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-stack-lg">
+<div class="container max-w-container-max mx-auto px-gutter">
+<div class="bg-inverse-surface rounded-[48px] p-12 text-center text-inverse-on-surface relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<h2 class="font-display-lg text-display-lg mb-6 relative z-10">¿Listo para moverte con nosotros?</h2>
+<p class="font-body-lg text-body-lg mb-10 max-w-xl mx-auto opacity-80 relative z-10">
+                        Descarga la app o regístrate  hoy mismo y empieza a disfrutar de la logística más confiable de Santiago.
+                    </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+<a class="bg-primary text-on-primary px-10 py-5 rounded-2xl font-headline-md hover:scale-105 transition-transform" href="#">Descargar App</a>
+<a class="bg-surface-bright text-on-surface px-10 py-5 rounded-2xl font-headline-md hover:scale-105 transition-transform" href="#">Conocer mas</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto bg-surface-container-highest mt-stack-lg border-t border-outline-variant/10">
+<div class="flex flex-col items-center md:items-start gap-4 mb-8 md:mb-0">
+<span class="font-headline-md text-headline-md font-bold text-primary">GoFlash</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2026 Logística Santiago. Corazón de Veraguas.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Privacidad</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Términos de Uso</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Soporte</a>
+</div>
+<div class="flex gap-4 mt-8 md:mt-0">
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer">face_nod</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer">photo_camera</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer">alternate_email</span>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-1 scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm">Mapa</span>
+
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm">Perfil</span>
+</a>
+</div>
+<script>
+        // Micro-interactions and hover effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.95)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+        
+        // Simple animation for the floating card
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce-slow {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            .animate-bounce-slow {
+                animation: bounce-slow 4s ease-in-out infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>GoFlash - Registro de Conductor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#ff6b00",
+                        "primary": "#a04100",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "on-surface-variant": "#5a4136",
+                        "outline-variant": "#e2bfb0",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary": "#3a5f94"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #fcf9f8; }
+        .step-glow-1 { box-shadow: 0 0 15px rgba(255, 107, 0, 0.4); }
+    </style>
+</head>
+<body class="text-on-surface flex flex-col min-h-screen pb-24">
+
+    <!-- Top Bar -->
+    <header class="w-full flex items-center justify-between px-8 h-16 bg-white shadow-sm border-b border-outline-variant/20">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-white font-bold">GF</div>
+            <span class="font-bold text-xl text-primary tracking-wide">GoFlash</span>
+        </div>
+        <span id="stepBadge" class="text-xs font-semibold uppercase bg-surface-container-low px-3 py-1 rounded-full text-on-surface-variant">Paso 1</span>
+    </header>
+
+    <main class="flex-grow pt-8 px-6 max-w-lg mx-auto w-full">
+        
+        <!-- Indicadores de Progreso Dinámicos -->
+        <div class="flex items-center justify-center mb-8">
+            <div id="progressIndicator" class="flex items-center w-full max-w-xs justify-between relative">
+                <div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center step-circle-1">
+                    <div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold step-glow-1 border-2 border-white">1</div>
+                    <span class="mt-2 text-xs font-bold text-primary">Datos</span>
+                </div>
+                <div class="relative z-10 flex flex-col items-center step-circle-2">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-low text-on-surface-variant flex items-center justify-center border border-outline-variant">2</div>
+                    <span class="mt-2 text-xs font-medium text-on-surface-variant">Auto</span>
+                </div>
+                <div class="relative z-10 flex flex-col items-center step-circle-3">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-low text-on-surface-variant flex items-center justify-center border border-outline-variant">3</div>
+                    <span class="mt-2 text-xs font-medium text-on-surface-variant">Pago</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA 1: FORMULARIO CONDUCTOR -->
+        <div id="pantallaConductor" class="bg-white rounded-xl shadow-lg p-6 border border-outline-variant/30">
+            <form id="formConductor" class="space-y-4">
+                <div class="mb-4">
+                    <h2 class="text-xl font-bold text-on-surface">Datos del Conductor</h2>
+                    <p class="text-xs text-on-surface-variant">Información personal para el alta de tu cuenta</p>
+                </div>
+
+                <!-- Zona de Foto Carnet -->
+                <div class="flex flex-col items-center justify-center border-2 border-dashed border-outline-variant rounded-xl p-4 bg-surface-container-low/50">
+                    <div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center text-on-surface-variant mb-2 overflow-hidden border border-outline-variant">
+                        <span class="material-symbols-outlined text-3xl" id="avatarIcon">account_circle</span>
+                        <img id="chosenAvatar" class="w-full h-full object-cover hidden" src="" alt="Foto carnet"/>
+                    </div>
+                    <label class="cursor-pointer bg-white border border-outline-variant px-3 py-1.5 rounded-lg text-xs font-semibold text-primary hover:bg-surface-container-low transition-all">
+                        Subir Foto Carnet
+                        <input type="file" id="fotoCarnet" accept="image/*" class="hidden" onchange="previewPhoto(event)"/>
+                    </label>
+                </div>
+                
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="nombre">Nombre</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="nombre" type="text" placeholder="Tu nombre" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="apellido">Apellido</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="apellido" type="text" placeholder="Tu apellido" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="cedula">Cédula</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="cedula" type="text" placeholder="0-000-0000" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="genero">Género</label>
+                    <select class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="genero" required>
+                        <option value="" disabled selected>Selecciona tu género</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="fechaNacimiento" type="date" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="telefono">Teléfono</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="telefono" type="tel" placeholder="6000-0000" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="correo">Correo Electrónico</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="correo" type="email" placeholder="correo@ejemplo.com" required/>
+                </div>
+
+                <button type="submit" class="w-full h-12 bg-primary-container hover:bg-primary text-white font-bold text-sm rounded-lg shadow-md transition-all flex items-center justify-center gap-2 mt-6">
+                    Siguiente: Tu Vehículo
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- PANTALLA 2: FORMULARIO VEHÍCULO -->
+        <div id="pantallaVehiculo" class="bg-white rounded-xl shadow-lg p-6 border border-outline-variant/30 hidden">
+            <form id="formVehiculo" class="space-y-4">
+                <div class="mb-4">
+                    <h2 class="text-xl font-bold text-on-surface">Detalles del Vehículo</h2>
+                    <p class="text-xs text-on-surface-variant">Especificaciones técnicas de la unidad</p>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="tipoVehiculo">Tipo de Vehículo</label>
+                    <select class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="tipoVehiculo">
+                        <option value="sedan">Sedán</option>
+                        <option value="suv">SUV / Camioneta</option>
+                        <option value="moto">Motocicleta</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="marca">Marca</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="marca" type="text" placeholder="Ej: Toyota" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="modelo">Modelo</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="modelo" type="text" placeholder="Ej: Corolla" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="placa">Placa Única</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm uppercase focus:ring-1 focus:ring-primary-container" id="placa" type="text" placeholder="AA0000" required/>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="anio">Año</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="anio" type="number" placeholder="2026" required/>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="cambiarPantalla(1)" class="w-1/2 h-12 bg-surface-container-low hover:bg-outline-variant/30 text-on-surface font-semibold text-sm rounded-lg transition-all">
+                        Atrás
+                    </button>
+                    <button type="submit" class="w-1/2 h-12 bg-primary-container hover:bg-primary text-white font-bold text-sm rounded-lg shadow-md transition-all">
+                        Siguiente: Pago
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- PANTALLA 3: FORMULARIO PAGO -->
+        <div id="pantallaPago" class="bg-white rounded-xl shadow-lg p-6 border border-outline-variant/30 hidden">
+            <form id="formPago" class="space-y-4">
+                <div class="mb-4">
+                    <h2 class="text-xl font-bold text-on-surface">Método de Pago</h2>
+                    <p class="text-xs text-on-surface-variant">Vinculación de cuenta para comisiones</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 my-2">
+                    <label class="border border-outline-variant p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-surface-container-low">
+                        <input type="radio" name="payment_method" value="clave" checked class="text-primary-container focus:ring-0" />
+                        <span class="text-xs font-bold text-on-surface-variant">Sistema Clave</span>
+                    </label>
+                    <label class="border border-outline-variant p-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-surface-container-low">
+                        <input type="radio" name="payment_method" value="credit" class="text-primary-container focus:ring-0" />
+                        <span class="text-xs font-bold text-on-surface-variant">Crédito / Débito</span>
+                    </label>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-semibold text-on-surface-variant" for="cardNumber">Número de Tarjeta</label>
+                    <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="cardNumber" type="text" placeholder="0000 0000 0000 0000" required/>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="expiryDate">Expiración</label>
+                        <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="expiryDate" type="text" placeholder="MM/AA" required/>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-on-surface-variant" for="cvv">CVV</label>
+                        <input class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-lg text-sm focus:ring-1 focus:ring-primary-container" id="cvv" type="password" placeholder="***" required/>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <label class="flex items-start gap-2 cursor-pointer">
+                        <input type="checkbox" id="aceptaTerminos" class="rounded text-primary-container focus:ring-primary-container mt-0.5" required/>
+                        <span class="text-xs text-on-surface-variant leading-tight">Acepto los Términos de Servicio y las políticas de comisión de GoFlash para conductores verificados.</span>
+                    </label>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="cambiarPantalla(2)" class="w-1/3 h-12 bg-surface-container-low hover:bg-outline-variant/30 text-on-surface font-semibold text-sm rounded-lg transition-all">
+                        Atrás
+                    </button>
+                    <button type="submit" id="finalSubmitBtn" class="w-2/3 h-12 bg-primary-container hover:bg-primary text-white font-bold text-sm rounded-lg shadow-md transition-all">
+                        Completar Registro
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- LOGICA INTEGRADA -->
+    <script>
+        let datosCompletos = { conductor: {}, vehiculo: {}, pago: {} };
+
+        function cambiarPantalla(paso) {
+            const pConductor = document.getElementById('pantallaConductor');
+            const pVehiculo = document.getElementById('pantallaVehiculo');
+            const pPago = document.getElementById('pantallaPago');
+            const badge = document.getElementById('stepBadge');
+
+            pConductor.classList.add('hidden');
+            pVehiculo.classList.add('hidden');
+            pPago.classList.add('hidden');
+
+            const c1 = document.querySelector('.step-circle-1 div');
+            const c2 = document.querySelector('.step-circle-2 div');
+            const c3 = document.querySelector('.step-circle-3 div');
+            const t1 = document.querySelector('.step-circle-1 span');
+            const t2 = document.querySelector('.step-circle-2 span');
+            const t3 = document.querySelector('.step-circle-3 span');
+
+            if (paso === 1) {
+                pConductor.classList.remove('hidden');
+                badge.innerText = "Paso 1";
+                actualizarEstiloCirculo(c1, t1, 'bg-primary-container text-white step-glow-1 border-2 border-white', 'text-primary font-bold');
+                actualizarEstiloCirculo(c2, t2, 'bg-surface-container-low text-on-surface-variant border border-outline-variant', 'text-on-surface-variant font-medium');
+                actualizarEstiloCirculo(c3, t3, 'bg-surface-container-low text-on-surface-variant border border-outline-variant', 'text-on-surface-variant font-medium');
+            } 
+            else if (paso === 2) {
+                pVehiculo.classList.remove('hidden');
+                badge.innerText = "Paso 2";
+                actualizarEstiloCirculo(c1, t1, 'bg-secondary text-white', 'text-secondary font-medium');
+                actualizarEstiloCirculo(c2, t2, 'bg-primary-container text-white step-glow-1 border-2 border-white', 'text-primary font-bold');
+                actualizarEstiloCirculo(c3, t3, 'bg-surface-container-low text-on-surface-variant border border-outline-variant', 'text-on-surface-variant font-medium');
+            } 
+            else if (paso === 3) {
+                pPago.classList.remove('hidden');
+                badge.innerText = "Paso 3";
+                actualizarEstiloCirculo(c1, t1, 'bg-secondary text-white', 'text-secondary font-medium');
+                actualizarEstiloCirculo(c2, t2, 'bg-secondary text-white', 'text-secondary font-medium');
+                actualizarEstiloCirculo(c3, t3, 'bg-primary-container text-white step-glow-1 border-2 border-white', 'text-primary font-bold');
+            }
+        }
+
+        function actualizarEstiloCirculo(elemento, texto, clasesElemento, clasesTexto) {
+            elemento.className = "w-10 h-10 rounded-full flex items-center justify-center font-bold " + clasesElemento;
+            texto.className = "mt-2 text-xs " + clasesTexto;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Submit Conductor
+            document.getElementById('formConductor').addEventListener('submit', (e) => {
+                e.preventDefault();
+                datosCompletos.conductor = {
+                    nombre: document.getElementById('nombre').value.trim(),
+                    apellido: document.getElementById('apellido').value.trim(),
+                    cedula: document.getElementById('cedula').value.trim(),
+                    genero: document.getElementById('genero').value,
+                    fechaNacimiento: document.getElementById('fechaNacimiento').value,
+                    telefono: document.getElementById('telefono').value.trim(),
+                    correo: document.getElementById('correo').value.trim()
+                };
+                cambiarPantalla(2);
+            });
+
+            // Submit Vehiculo
+            document.getElementById('formVehiculo').addEventListener('submit', (e) => {
+                e.preventDefault();
+                datosCompletos.vehiculo = {
+                    tipo: document.getElementById('tipoVehiculo').value,
+                    marca: document.getElementById('marca').value.trim(),
+                    modelo: document.getElementById('modelo').value.trim(),
+                    placa: document.getElementById('placa').value.trim().toUpperCase(),
+                    anio: document.getElementById('anio').value
+                };
+                cambiarPantalla(3);
+            });
+
+            // Máscaras de pago
+            document.getElementById('cardNumber').addEventListener('input', (e) => {
+                let v = e.target.value.replace(/[^\d]/g, '');
+                e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+            });
+
+            document.getElementById('expiryDate').addEventListener('input', (e) => {
+                let v = e.target.value.replace(/[^\d]/g, '');
+                if (v.length > 2) e.target.value = v.substring(0, 2) + '/' + v.substring(2, 4);
+            });
+
+            // Submit Pago Final -> REDIRECCIÓN AGREGADA AQUÍ
+            document.getElementById('formPago').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (!document.getElementById('aceptaTerminos').checked) {
+                    alert("Debes aceptar los términos y condiciones de GoFlash.");
+                    return;
+                }
+
+                const submitBtn = document.getElementById('finalSubmitBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Enviando...';
+
+                datosCompletos.pago = {
+                    metodo: document.querySelector('input[name="payment_method"]:checked').value,
+                    tarjetaTerminacion: document.getElementById('cardNumber').value.slice(-4)
+                };
+
+                // Guardar los datos consolidados en memoria local
+                localStorage.setItem('goflash_driver_profile', JSON.stringify(datosCompletos));
+
+                // Redirección inmediata al segundo archivo HTML
+                window.location.href = "GoFlash 2.html";
+            });
+        });
+
+        function previewPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const icon = document.getElementById('avatarIcon');
+                    const img = document.getElementById('chosenAvatar');
+                    if(icon && img) {
+                        icon.classList.add('hidden');
+                        img.src = e.target.result;
+                        img.classList.remove('hidden');
+                    }
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

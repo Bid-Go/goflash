@@ -128,7 +128,6 @@
     </style>
 </head>
 <body class="bg-surface-bright text-on-surface font-body-md overflow-hidden lg:overflow-auto">
-       // boton de regreso 
     <div style="position:fixed; top:20px; left:20px; z-index:9999;">
     <button onclick="history.back()"
         style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
@@ -328,7 +327,6 @@
 
         let controlRuta = null;
 
-        // coordenadas
         const lugares = {
             "terminal": [8.1015, -80.9752],
             "parque": [8.097619149055708, -80.98328568681539],
@@ -357,7 +355,7 @@
                 ],
                 routeWhileDragging: false,
                 language: 'es',
-                show: false, // Quita por completo el panel de texto blanco molesto
+                show: false, 
                 createMarker: function(i, waypoint, n) {
                     const tipo = (i === 0) ? "Origen" : "Destino";
                     return L.marker(waypoint.latLng).bindPopup(tipo);
@@ -368,7 +366,7 @@
             controlRuta.on('routesfound', function(e) {
                 const ruta = e.routes[0];
                 const distanciaMetros = ruta.summary.totalDistance;
-                const distanciaKilometros = (distanciaMetros / 1000); // Guardamos el número con decimales completos
+                const distanciaKilometros = (distanciaMetros / 1000); 
                 document.getElementById('panel-distancia').innerHTML = `DISTANCIA: ${distanciaKilometros.toFixed(2)} KM`;
                 let costoTotal = distanciaKilometros * 0.35;
                if (costoTotal < 1.50) {

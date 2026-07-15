@@ -1,3 +1,7 @@
+
+        });
+    </script>
+</body></html>
 <!DOCTYPE html>
 <html class="light" lang="es"><head>
 <meta charset="utf-8"/>
@@ -84,7 +88,6 @@
                         "body-md": ["Inter"],
                         "headline-lg": ["Montserrat"],
                         "label-lg": ["Inter"],
-                        "body-md": ["Inter"],
                         "headline-md": ["Montserrat"],
                         "display-lg": ["Montserrat"]
                     },
@@ -108,7 +111,7 @@
             vertical-align: middle;
         }
         .map-container {
-            height: calc(100vh - 64px);
+            height: 100%;
         }
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
@@ -128,14 +131,17 @@
     </style>
 </head>
 <body class="bg-surface-bright text-on-surface font-body-md overflow-hidden lg:overflow-auto">
+    <!-- Botón Regresar corregido con su div de cierre -->
     <div style="position:fixed; top:20px; left:20px; z-index:9999;">
-    <button onclick="history.back()"
-        style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
-        ← Regresar
-    </button>
+        <button onclick="history.back()"
+            style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
+            ← Regresar
+        </button>
+    </div>
+
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto bg-surface-bright shadow-sm">
 <div class="flex items-center gap-2">
-<img src="Image-removebg-preview.png" alt="Descripción de la imagen" width="50" height="50">
+<img src="Image-removebg-preview.png" alt="Logo de GoFlash" width="50" height="50">
 <a href="GoFlash2.html"
    class="font-headline-md text-headline-md font-bold text-primary hover:text-blue-600 transition-colors cursor-pointer">
     GoFlash
@@ -150,11 +156,13 @@
 <div class="flex items-center gap-4">
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary">notifications</button>
 <div class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary-fixed">
-<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling customer service representative for a logistics company in Panama. The background is a clean, modern office with soft blue and orange accents reflecting the corporate brand. The lighting is warm and welcoming, emphasizing trust and local reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY3sA2FTQeUjjkWSoRskcQ5xf1lPX-nMchg6uthWm4emLy3DShH2mjkk9GcFkE9L7ucgVhdFTRPvjyikeFEYT02fvi5OTLo1tOI6BR4lSXzTJCrBgN3x5DvtjOlUClDGHE2beo4WP84AE0xxu205DkjUNByENfwRQvidIAyTb7OERaIOi6zOQ5Kd5DLwlNx4RwDbP_1XiJWDiRwVyWLNojD397aQGTT7ImNkU4BQDkSSWkVOWpDSO1U00_g4eZG5qcY4dfpKKqgkA"/>
+<img class="w-full h-full object-cover" data-alt="Representante de GoFlash" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY3sA2FTQeUjjkWSoRskcQ5xf1lPX-nMchg6uthWm4emLy3DShH2mjkk9GcFkE9L7ucgVhdFTRPvjyikeFEYT02fvi5OTLo1tOI6BR4lSXzTJCrBgN3x5DvtjOlUClDGHE2beo4WP84AE0xxu205DkjUNByENfwRQvidIAyTb7OERaIOi6zOQ5Kd5DLwlNx4RwDbP_1XiJWDiRwVyWLNojD397aQGTT7ImNkU4BQDkSSWkVOWpDSO1U00_g4eZG5qcY4dfpKKqgkA"/>
 </div>
 </div>
 </header>
-<main class="pt-16 flex flex-col lg:flex-row h-screen">
+
+<!-- Contenedor principal con alto dinámico corregido para evitar scroll global -->
+<main class="mt-16 flex flex-col lg:flex-row h-[calc(100vh-4rem)]">
 <section class="lg:flex-1 relative map-container bg-surface-container">
 <div id="map" class="absolute inset-0 z-0 w-full h-full"></div>
 
@@ -175,7 +183,7 @@
 </div>
 </section>
 
-<aside class="w-full lg:w-[480px] bg-surface-container-lowest border-l border-outline-variant/20 flex flex-col h-screen overflow-hidden">
+<aside class="w-full lg:w-[480px] bg-surface-container-lowest border-l border-outline-variant/20 flex flex-col h-full overflow-hidden">
 <div class="p-gutter overflow-y-auto custom-scrollbar h-full pb-32">
 <div class="mb-stack-md">
 <h1 class="font-headline-lg text-headline-lg text-on-surface">Nueva Entrega</h1>
@@ -240,7 +248,7 @@
 <div class="space-y-3">
 <div class="group p-4 bg-surface-container-lowest border border-outline-variant/30 rounded-xl hover:shadow-lg transition-all cursor-pointer flex gap-4 ring-2 ring-transparent hover:ring-primary/20">
 <div class="w-14 h-14 rounded-lg bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Portrait of a friendly Panamanian delivery driver wearing a corporate orange polo shirt..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeZ4z5oNRKhX8Xmv-4TG5fpMfMgUzk6e4oSkOXbACE0TCq6GEyVE3EkFCfXqzr_Xqczx03TaD78z4nritj_8qNZs8Y_TXrIRW8eNQL6ilT6f8x9KoP5rVZ91JazRGKnZsMXnqmImGcY0NOAuF6D3DAY6Bl-_kDUQZplcld-yINzWDomkh-_2ZMgzpQNC3nR1IHohPP4LxDEux5R1xt2qUFHBDWXsCx2290VM5Gs9axukyUgEFC-beoYnxmst0NhcxwUZQLs2LMMsE"/>
+<img class="w-full h-full object-cover" data-alt="Roberto Castillo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeZ4z5oNRKhX8Xmv-4TG5fpMfMgUzk6e4oSkOXbACE0TCq6GEyVE3EkFCfXqzr_Xqczx03TaD78z4nritj_8qNZs8Y_TXrIRW8eNQL6ilT6f8x9KoP5rVZ91JazRGKnZsMXnqmImGcY0NOAuF6D3DAY6Bl-_kDUQZplcld-yINzWDomkh-_2ZMgzpQNC3nR1IHohPP4LxDEux5R1xt2qUFHBDWXsCx2290VM5Gs9axukyUgEFC-beoYnxmst0NhcxwUZQLs2LMMsE"/>
 </div>
 <div class="flex-1">
 <div class="flex justify-between items-start">
@@ -258,7 +266,7 @@
 </div>
 <div class="group p-4 bg-surface-container-lowest border border-outline-variant/30 rounded-xl hover:shadow-lg transition-all cursor-pointer flex gap-4 ring-2 ring-transparent hover:ring-primary/20">
 <div class="w-14 h-14 rounded-lg bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Close up of a female delivery professional in Panama..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq7KrS3zuJoz-73tKk-Bhvlf4JVjHRIail1mkefL69bJMR8iKzWV17OBb2cupeXjDNzYKCO3PKh243mNC2l1BBBGdPb-lSwFPqoATkbEyuMLRd04fFabhyFFeUhq_EXtdTd9lWnFckB6fIb1VexOC6V3B_W9zUz-aFawml_X7D9GLrBdE0lvrQmKmlgcNdJuRAxkt7UaidNIHzJ2oitkRZLtJM8rWIMQzJ19_Ipw6c5LB2KTjir94hyhIW6odI9QSWoVJycjiCXCA"/>
+<img class="w-full h-full object-cover" data-alt="Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq7KrS3zuJoz-73tKk-Bhvlf4JVjHRIail1mkefL69bJMR8iKzWV17OBb2cupeXjDNzYKCO3PKh243mNC2l1BBBGdPb-lSwFPqoATkbEyuMLRd04fFabhyFFeUhq_EXtdTd9lWnFckB6fIb1VexOC6V3B_W9zUz-aFawml_X7D9GLrBdE0lvrQmKmlgcNdJuRAxkt7UaidNIHzJ2oitkRZLtJM8rWIMQzJ19_Ipw6c5LB2KTjir94hyhIW6odI9QSWoVJycjiCXCA"/>
 </div>
 <div class="flex-1">
 <div class="flex justify-between items-start">
@@ -369,18 +377,22 @@
                 const distanciaKilometros = (distanciaMetros / 1000); 
                 document.getElementById('panel-distancia').innerHTML = `DISTANCIA: ${distanciaKilometros.toFixed(2)} KM`;
                 let costoTotal = distanciaKilometros * 0.35;
-               if (costoTotal < 1.50) {
-                costoTotal = 1.50;
-              }
+                if (costoTotal < 1.50) {
+                    costoTotal = 1.50;
+                }
                 document.getElementById('precio-viaje').innerHTML = `$${costoTotal.toFixed(2)}`;
-                });
+            });
         }
 
         function resetMap() {
-            if (controlRuta) { map.removeControl(controlRuta); }
+            if (controlRuta) { 
+                map.removeControl(controlRuta); 
+                controlRuta = null; // Corrección lógica del control
+            }
             document.getElementById('origen').value = "";
             document.getElementById('destino').value = "";
             document.getElementById('panel-distancia').innerHTML = "DISTANCIA: --";
+            document.getElementById('precio-viaje').innerHTML = "$3.50"; // Reseteo de precio inicial
             map.setView([8.0885, -80.9761], 14);
         }
 
@@ -403,4 +415,5 @@
             });
         });
     </script>
-</body></html>
+</body>
+</html>
